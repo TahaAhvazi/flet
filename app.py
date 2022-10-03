@@ -1,33 +1,51 @@
-from cgitb import text
-from ctypes import alignment
+from time import sleep
 import flet
-from flet import IconButton, Page, Row, TextField, icons, Text
+from flet import Page, Text, Row, TextField, ElevatedButton
 
 
 def main(page: Page):
-    page.title = "Taha Flet Counter App"
+    # page.horizontal_alignment = "center"
     page.vertical_alignment = "center"
-    page.horizontal_alignment = "center"
-    txt_number = Text(value=0)
+    # Create our variable wich is  a regular Python calss -> Controls
+    # t = Text(value="Counter App", color="green")
+    # # Append / Add the control to the page
+    # # page.controls.append(t)
+    # # # Update the ui of that specific page -> See the changes
+    # # page.update()
+    # page.add(t)
+    # while 0 == 0:
+    #     for i in range(10):
+    #         t.value = f"Step {i}"
+    #         page.update()
+    #         sleep(1)
+    #     if (i == 9):
+    #         sleep(1)
+    #         t.value = 0
+    # page.update()
 
-    def minus_click(e):
-        txt_number.value = int(txt_number.value) - 1
-        page.update()
+    # page.add(
+    #     Row(controls=[
+    #         Text(value="A", color="yellow"),
+    #         Text(value="B", color="blue"),
+    #         TextField(label="Youre Name :"),
+    #         ElevatedButton(text="Say My Name!"),
+    #         Text(value="C", color="white"),
+    #     ],
+    #         alignment="center",
+    #     )
+    # )
 
-    def plus_click(e):
-        txt_number.value = int(txt_number.value) + 1
-        page.update()
+    # for i in range(20):
+    #     page.controls.append(Text(value=f"Line {i}"))
+    #     if i > 4:
+    #         page.controls.pop(0)
+    #     page.update()
+    #     sleep(0.3)
 
-    page.add(
-        Row(
-            [
-                IconButton(icons.ADD, on_click=plus_click),
-                txt_number,
-                IconButton(icons.REMOVE, on_click=minus_click),
-            ],
-            alignment="center"
-        )
-    )
+    def buttom_clicked(e):
+        page.add(Text(value="Clicked!"),)
+
+    page.add(ElevatedButton(text="Click me !", on_click=buttom_clicked))
 
 
 flet.app(target=main)
